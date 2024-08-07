@@ -175,7 +175,7 @@ def scan_directory(input_folder, processed_files, event_handler):
     new_files.sort(key=lambda x: os.path.getmtime(x))
 
     for f in new_files:
-        time.sleep(2)
+        # time.sleep(2)
         event_handler.process(f)
         processed_files.add(f)
 
