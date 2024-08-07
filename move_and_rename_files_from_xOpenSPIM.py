@@ -2,6 +2,8 @@ import os
 import re
 import time
 import shutil
+import argparse
+import sys
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from threading import Timer
@@ -200,9 +202,22 @@ def monitor_folder(folder_to_watch, output_folder):
         observer.stop()
     observer.join()
 
-if __name__ == "__main__":
-    folder_to_watch = "/media/tema/big_storage/work/test_data/dresden_collab2024/input_img/xOpenSpim_max_proj_timelapse"
-    output_folder = (
-        "/media/tema/big_storage/work/test_data/dresden_collab2024/input_img"
+def main():
+    # Create the argument parser
+    parser = argparse.ArgumentParser(
+        description="Watch a directory for new file additions and collect .tif"
+        "files, rename them from xOpenSPIM format and copy to output directory.",
+        argument_default=argparse.SUPPRESS,
     )
-    monitor_folder(folder_to_watch, output_folder)
+    parser.add_argument(
+        "-i", "--input", required=True, help="Input folder path to watch."
+    )
+    parser.add_argument(
+        "-o", "--output", required=True, help="Output folder path to save stacks."
+    )
+    args = parser.parse_args(sys.argv[1:])
+    monitor_folder(args.input, args.output)
+
+
+if __name__ == "__main__":
+    main()
