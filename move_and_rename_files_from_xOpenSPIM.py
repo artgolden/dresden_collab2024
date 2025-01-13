@@ -85,16 +85,18 @@ class ImageFile:
         instance = cls.__new__(cls)
         instance.path_to_image_dir = file_dir
         try:
-            pattern = r"_channel(\d+)_position(\d+)_time(\d+)_view(\d+)_z(\d+)\.(\w+)"
+            pattern = (
+                r"(.*?)_channel(\d+)_position(\d+)_time(\d+)_view(\d+)_z(\d+)\.(\w+)"
+            )
             match = re.match(pattern, file_name)
             if match:
-                instance.channel = int(match.group(1))
-                instance.specimen = int(match.group(2))
-                instance.time_point = int(match.group(3))
+                instance.channel = int(match.group(2))
+                instance.specimen = int(match.group(3))
+                instance.time_point = int(match.group(4))
                 instance.camera = 0
-                instance.plane = int(match.group(5))
-                instance.extension = match.group(6)
-                instance.timelapse_id = "20240808-111112"  
+                instance.plane = int(match.group(6))
+                instance.extension = match.group(7)
+                instance.timelapse_id = "20250113-111112"  
                 instance.illumination = 0  
                 instance.total_num_planes = 1  
                 instance.additional_info = ""  

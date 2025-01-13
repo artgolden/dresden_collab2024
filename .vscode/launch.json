@@ -11,9 +11,9 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "args": ["-i",
-            "/media/tema/big_storage/work/test_data/dresden_collab2024/input_img/xOpenSpim_max_proj_timelapse",
+            "/media/tema/big_storage/work/goethe/dresden_laser_collab_2025/7_01_2025_MIPs_night_timelapse",
             "-o",
-            "/media/tema/big_storage/work/test_data/dresden_collab2024/input_img"]
+            "/media/tema/big_storage/work/goethe/dresden_laser_collab_2025/7_01_2025_MIPs_night_timelapse_PIV"]
         }
     ]
 }
